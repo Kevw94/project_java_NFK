@@ -80,7 +80,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.example.project_java_nfk/com.example.project_java_nfk.HelloApplication
+                            <mainClass>com.example.project_java_nfk/com.example.project_java_nfk.MainApplication
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
