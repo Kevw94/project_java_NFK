@@ -1,5 +1,8 @@
 package com.example.project_java_nfk.Module;
 
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+
 import java.util.ArrayList;
 
 public class Book  {
@@ -19,6 +22,9 @@ public class Book  {
         this.range = range;
         this.summary = summary;
     }
+
+
+
 
     public String getName() {
         return name;

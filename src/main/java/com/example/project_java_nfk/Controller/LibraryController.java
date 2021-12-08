@@ -4,9 +4,7 @@ import com.example.project_java_nfk.Module.Book;
 import com.example.project_java_nfk.Module.Library;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
@@ -38,6 +36,24 @@ public class LibraryController implements Initializable {
     @FXML
     private Button validBook;
 
+    @FXML
+    private TextField intGetColumn;
+
+    @FXML
+    private TextField intGetPublished;
+
+    @FXML
+    private TextField intGetRange;
+
+    @FXML
+    private TextField txtGetAuthorName;
+
+    @FXML
+    private TextArea txtGetSummary;
+
+    @FXML
+    private TextField txtGetTitle;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle ) {
         Library maLybrairie = new Library();
@@ -55,8 +71,8 @@ public class LibraryController implements Initializable {
     }
 
     public void newBook(Library maLybrairie){
-        Book bookOne = new Book("nightCall", "Stephen King", 2010, 1, 1, "bonjour");
-        maLybrairie.getBookPrint().add(bookOne);
+        Book bookTwo = new Book(txtGetTitle.getText(), txtGetAuthorName.getText(),(Integer.parseInt(intGetPublished.getText())),(Integer.parseInt(intGetColumn.getText())),(Integer.parseInt(intGetRange.getText())),txtGetSummary.getText());
+        maLybrairie.getBookPrint().add(bookTwo);
         for (int i = 0; i < maLybrairie.getBookPrint().size(); i++) {
             tbvTtable.getItems().add(maLybrairie.getBookPrint().get(i));
         }
