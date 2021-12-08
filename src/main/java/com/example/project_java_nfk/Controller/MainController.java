@@ -25,31 +25,13 @@ import java.util.ResourceBundle;
 }*/
 public class MainController implements Initializable {
 
-    @FXML
-    private TableColumn<?, ?> printColumn;
-
-    @FXML
-    private TableColumn<Book, String> printNamedAuthor;
-
-    @FXML
-    private TableColumn<Book, String> printNamedBook;
-
-    @FXML
-    private TableColumn<?, ?> printPublishedDate;
-
-    @FXML
-    private TableColumn<?, ?> printRange;
-
-    @FXML
-    private TableView<Book> tbvTtable;
-
-    @FXML
-    private TableColumn<?, ?> printSummary;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        printNamedBook.setCellValueFactory(new PropertyValueFactory<Book, String>("Name"));
+
+
+
 
 
     }

@@ -78,19 +78,13 @@ public class Book  {
                 ", column=" + column +
                 ", range=" + range +
                 ", summary='" + summary + '\'' +
-                "bookPrint=" + bookPrint +
+
                 '}';
     }
-    public ArrayList<Book> bookPrint = new ArrayList<Book>();
 
 
 
-    public void newBook(){
-        Book bookOne = new Book("nightCall", "Stephen King", 2010, 1, 1, "bonjour");
-        bookPrint.add(bookOne);
-    }
 
-    public ArrayList<Book> getBookPrint() {
-        return bookPrint;
-    }
+
+
 }

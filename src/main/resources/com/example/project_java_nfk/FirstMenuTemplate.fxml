@@ -32,20 +32,12 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SeparatorMenuItem?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
 <VBox prefHeight="651.0" prefWidth="867.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project_java_nfk.Controller.MainController">
   <children>
@@ -88,49 +80,7 @@
         </Menu>
       </menus>
     </MenuBar>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="550.0" prefWidth="803.0" VBox.vgrow="ALWAYS">
-      <children>
-        <Label alignment="CENTER" layoutX="155.0" layoutY="177.0" style="&#10;" text="Drag components from Library here…" textAlignment="CENTER" textFill="#9f9f9f" wrapText="false">
-          <font>
-            <Font size="18.0" />
-          </font>
-        </Label>
-            <HBox prefHeight="319.0" prefWidth="867.0">
-               <children>
-                  <TableView fx:id="tbvTtable" prefHeight="252.0" prefWidth="447.0">
-                    <columns>
-                      <TableColumn fx:id="printNamedBook" prefWidth="75.0" text="Name" />
-                      <TableColumn fx:id="printNamedAuthor" prefWidth="75.0" text="Auteur" />
-                        <TableColumn fx:id="printSummary" prefWidth="75.0" text="Résumé" />
-                        <TableColumn fx:id="printColumn" prefWidth="75.0" text="Colonne" />
-                        <TableColumn fx:id="printRange" prefWidth="75.0" text="Rangée" />
-                        <TableColumn fx:id="printPublishedDate" prefWidth="75.0" text="Parution" />
-                    </columns>
-                  </TableView>
-                  <VBox prefHeight="319.0" prefWidth="215.0">
-                     <children>
-                        <Label text="Titre" />
-                        <Label layoutX="10.0" layoutY="10.0" text="Auteur" />
-                        <Label layoutX="10.0" layoutY="27.0" text="Parution" />
-                        <Label layoutX="10.0" layoutY="44.0" text="Colonne" />
-                        <Label layoutX="10.0" layoutY="61.0" text="Rangée" />
-                        <Label layoutX="10.0" layoutY="78.0" text="Résumé" />
-                     </children>
-                  </VBox>
-                  <VBox prefHeight="319.0" prefWidth="204.0">
-                     <children>
-                        <TextField />
-                        <TextField layoutX="10.0" layoutY="10.0" />
-                        <TextField layoutX="10.0" layoutY="36.0" />
-                        <TextField layoutX="10.0" layoutY="62.0" />
-                        <TextField layoutX="10.0" layoutY="88.0" />
-                        <TextArea prefHeight="200.0" prefWidth="200.0" />
-                        <Button mnemonicParsing="false" text="Valider" />
-                     </children>
-                  </VBox>
-               </children>
-            </HBox>
-      </children>
-    </AnchorPane>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="550.0" prefWidth="803.0" VBox.vgrow="ALWAYS" />
+      <fx:include fx:id="pageLibrary" source="library.fxml" />
   </children>
 </VBox>
