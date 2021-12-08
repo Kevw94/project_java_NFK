@@ -19,5 +19,7 @@ public class Library {
         bookPrint.add(bookOne);
     }
 
-
+    public ArrayList<Book> getBookPrint() {
+        return bookPrint;
+    }
 }

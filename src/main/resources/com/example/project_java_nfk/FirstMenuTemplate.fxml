@@ -97,7 +97,7 @@
         </Label>
             <HBox prefHeight="319.0" prefWidth="867.0">
                <children>
-                  <TableView prefHeight="252.0" prefWidth="447.0">
+                  <TableView fx:id="tbvTtable" prefHeight="252.0" prefWidth="447.0">
                     <columns>
                       <TableColumn fx:id="printNamedBook" prefWidth="75.0" text="Name" />
                       <TableColumn fx:id="printNamedAuthor" prefWidth="75.0" text="Auteur" />

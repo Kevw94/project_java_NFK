@@ -1,12 +1,14 @@
 package com.example.project_java_nfk.Module;
 
-public class Book extends Library {
-    String name;
-    String authorName;
-    int publishedDate;
-    int column;
-    int range;
-    String summary;
+import java.util.ArrayList;
+
+public class Book  {
+    private String name;
+    private String authorName;
+    private int publishedDate;
+    private int column;
+    private int range;
+    private String summary;
 
 
     public Book(String name, String authorName, int publishedDate, int column, int range, String summary) {
@@ -76,6 +78,19 @@ public class Book extends Library {
                 ", column=" + column +
                 ", range=" + range +
                 ", summary='" + summary + '\'' +
+                "bookPrint=" + bookPrint +
                 '}';
+    }
+    public ArrayList<Book> bookPrint = new ArrayList<Book>();
+
+
+
+    public void newBook(){
+        Book bookOne = new Book("nightCall", "Stephen King", 2010, 1, 1, "bonjour");
+        bookPrint.add(bookOne);
+    }
+
+    public ArrayList<Book> getBookPrint() {
+        return bookPrint;
     }
 }
