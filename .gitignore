@@ -34,9 +34,6 @@ target/
 *.war
 *.ear
 
-#add files manually here 
-
-*.xml
 
 
 
