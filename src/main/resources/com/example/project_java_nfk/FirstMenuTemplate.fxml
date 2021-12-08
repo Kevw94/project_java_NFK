@@ -47,7 +47,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="651.0" prefWidth="867.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="651.0" prefWidth="867.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project_java_nfk.Controller.MainController">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -99,12 +99,12 @@
                <children>
                   <TableView prefHeight="252.0" prefWidth="447.0">
                     <columns>
-                      <TableColumn prefWidth="75.0" text="Name" />
-                      <TableColumn prefWidth="75.0" text="Auteur" />
-                        <TableColumn prefWidth="75.0" text="Résumé" />
-                        <TableColumn prefWidth="75.0" text="Colonne" />
-                        <TableColumn prefWidth="75.0" text="Rangée" />
-                        <TableColumn prefWidth="75.0" text="Parution" />
+                      <TableColumn fx:id="printNamedBook" prefWidth="75.0" text="Name" />
+                      <TableColumn fx:id="printNamedAuthor" prefWidth="75.0" text="Auteur" />
+                        <TableColumn fx:id="printSummary" prefWidth="75.0" text="Résumé" />
+                        <TableColumn fx:id="printColumn" prefWidth="75.0" text="Colonne" />
+                        <TableColumn fx:id="printRange" prefWidth="75.0" text="Rangée" />
+                        <TableColumn fx:id="printPublishedDate" prefWidth="75.0" text="Parution" />
                     </columns>
                   </TableView>
                   <VBox prefHeight="319.0" prefWidth="215.0">
