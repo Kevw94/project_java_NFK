@@ -84,6 +84,7 @@ public class LibraryController implements Initializable {
 
             Library myLibrary = new Library();
             System.out.println(myLibrary.bookPrint);
+
             newBook(myLibrary);
             // HERE IS PLACE TO PUT METHOD FOR CHECKING VALID BOOK
 
