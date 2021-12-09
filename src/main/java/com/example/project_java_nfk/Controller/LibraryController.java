@@ -77,7 +77,6 @@ public class LibraryController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle ) {
-        Library maLybrairie = new Library();
         TimeZone.setDefault(TimeZone.getTimeZone("Europe/Paris"));
         System.out.println(now);
 
@@ -92,12 +91,6 @@ public class LibraryController implements Initializable {
         // before validate
         //System.out.println(tbvTtable.getItems() + " items after cells");
         validBook.setOnMouseClicked(actionBTN -> {
-            newBook(maLybrairie);
-
-
-
-
-
             //System.out.println(myLibrary.bookPrint);
             //System.out.println(tbvTtable.getSelectionModel().getSelectedItems());
             // HERE IS PLACE TO PUT METHOD FOR CHECKING VALID BOOK
@@ -165,7 +158,7 @@ public class LibraryController implements Initializable {
             tbvTtable.getItems().add(myLibrary.getBookPrint().get(i));
             i++;
             //TODO FOR NOT DUPLICATE
-            if(duplicate == false){
+            if (duplicate == false) {
 
 
 //                System.out.println("not in");
@@ -174,9 +167,10 @@ public class LibraryController implements Initializable {
 //                i++;
 
             }
-        } else if (duplicate == true){
+        } else if (duplicate == true) {
             System.out.println("duplicate ");
         }
+        return book;
     }
 
     private void handle(MouseEvent event) {
