@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Date;
 
 public class MainApplication extends Application {
     @Override
@@ -21,8 +22,8 @@ public class MainApplication extends Application {
 
     public static void main(String[] args) {
         launch();
-        Library testLibrary = new Library();
-        testLibrary.newBook();
-        System.out.println(testLibrary.bookPrint);
+//        Library testLibrary = new Library();
+//        testLibrary.newBook();
+//        System.out.println(testLibrary.bookPrint);
     }
 }
