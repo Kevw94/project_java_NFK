@@ -113,16 +113,16 @@ public class MainController implements Initializable {
 
     }
 
-    public ObservableList<Book> getBookPrint(){
-
-                ObservableList<Book> livre = FXCollections.observableArrayList();
-                livre.add(new Book("hp","frank",2021,1,3,"ofvner"));
-                return livre;
-
-
-        /*Book bookOne = new Book("nightCall", "Stephen King", 2010, 1, 1, "bonjour");
-        bookOne.getBookPrint().add(bookOne);*/
-
-
-    }
+//    public ObservableList<Book> getBookPrint(){
+//
+//                //ObservableList<Book> livre = FXCollections.observableArrayList();
+//                //livre.add(new Book("hp","frank",2021,1,3,"ofvner"));
+//               // return livre;
+//
+//
+//        /*Book bookOne = new Book("nightCall", "Stephen King", 2010, 1, 1, "bonjour");
+//        bookOne.getBookPrint().add(bookOne);*/
+//
+//
+//    }
 }
