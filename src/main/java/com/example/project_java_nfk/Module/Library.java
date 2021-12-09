@@ -5,6 +5,9 @@ import javafx.scene.control.TextField;
 import java.util.ArrayList;
 
 public class Library {
+    public ArrayList<Book> bookPrint = new ArrayList<Book>();
+
+
     @Override
     public String toString() {
         return "Library{" +
@@ -12,7 +15,7 @@ public class Library {
                 '}';
     }
 
-    public ArrayList<Book> bookPrint = new ArrayList<Book>();
+
 
 
 
