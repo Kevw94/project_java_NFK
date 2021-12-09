@@ -20,9 +20,9 @@ public class MainApplication extends Application {
     }
 
     public static void main(String[] args) {
-        launch();
-        Library testLibrary = new Library();
-        testLibrary.newBook();
-        System.out.println(testLibrary.bookPrint);
+       // launch();
+        //Library testLibrary = new Library();
+       // testLibrary.newBook();
+       // System.out.println(testLibrary.bookPrint);
     }
 }
