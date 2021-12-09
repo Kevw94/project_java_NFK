@@ -5,9 +5,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -25,13 +29,86 @@ import java.util.ResourceBundle;
 }*/
 public class MainController implements Initializable {
 
+    @FXML
+    private MenuItem runlibrary;
+
+    @FXML
+    private MenuItem runBinaire;
+
+    @FXML
+    private Menu runHexadecimal;
+
+    @FXML
+    private MenuItem runIMC;
+
+    @FXML
+    private Menu runChiffreRomain;
+
+    @FXML
+    private Menu runArmee;
+
+    @FXML
+    private AnchorPane pageLibrary;
+
+    @FXML
+    private  AnchorPane pageImc;
+
+    @FXML
+    private AnchorPane mainAnc;
+
+    @FXML
+    private  AnchorPane pageBinaire;
+
+    @FXML
+    private AnchorPane pageHexadecimal;
+
+    @FXML
+    private AnchorPane pageChiffreRomain;
+
+    @FXML
+    private AnchorPane pageArmee;
+
+
+
+
+
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        mainAnc.getChildren().removeAll(pageLibrary, pageImc, pageBinaire,pageHexadecimal,pageChiffreRomain,pageArmee);
 
 
+        runlibrary.setOnMenuValidation(launchBib -> {
+            mainAnc.getChildren().removeAll(pageImc, pageBinaire,pageHexadecimal,pageChiffreRomain,pageArmee);
+            mainAnc.getChildren().add(pageLibrary);
 
+        });
 
+        runIMC.setOnMenuValidation(launchBib ->{
+            mainAnc.getChildren().removeAll(pageLibrary, pageBinaire,pageHexadecimal,pageChiffreRomain,pageArmee);
+            mainAnc.getChildren().add(pageImc);
+        });
+
+        runBinaire.setOnMenuValidation(launchBib ->{
+            mainAnc.getChildren().removeAll(pageImc, pageLibrary,pageHexadecimal,pageChiffreRomain,pageArmee);
+            mainAnc.getChildren().add(pageBinaire);
+        });
+
+        runHexadecimal.setOnMenuValidation(launchBib ->{
+            mainAnc.getChildren().removeAll(pageImc, pageLibrary,pageBinaire,pageChiffreRomain,pageArmee);
+            mainAnc.getChildren().add(pageHexadecimal);
+        });
+
+        runChiffreRomain.setOnMenuValidation(launchBib ->{
+            mainAnc.getChildren().removeAll(pageImc, pageLibrary,pageHexadecimal,pageArmee);
+            mainAnc.getChildren().add(pageChiffreRomain);
+        });
+
+        runArmee.setOnMenuValidation(launchBib ->{
+            mainAnc.getChildren().removeAll(pageImc, pageLibrary,pageHexadecimal,pageChiffreRomain);
+            mainAnc.getChildren().add(pageArmee);
+        });
 
 
     }
