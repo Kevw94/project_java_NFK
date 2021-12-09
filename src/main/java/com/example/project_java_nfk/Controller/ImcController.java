@@ -7,7 +7,6 @@ import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
-import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 
 public class ImcController implements Initializable {
@@ -85,7 +84,9 @@ public class ImcController implements Initializable {
         this.printWeight = printWeight;
         this.resultOperation = resultOperation;
         this.sliderImc = sliderImc;
+
     }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         printSize.setText("size");
