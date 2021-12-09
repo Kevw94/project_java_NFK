@@ -18,48 +18,101 @@ public class ImcController implements Initializable {
     private Button operation;
 
     @FXML
-    private float printSize;
+    private TextField printSize;
 
     @FXML
-    private float printWeight;
+    private TextField printWeight;
 
     @FXML
-    private float resultOperation;
+    private TextField resultOperation;
 
     @FXML
-    private float sliderImc;
+    private Slider sliderImc;
 
+
+    public TextField getInfoResult() {
+        return infoResult;
+    }
+
+    public void setInfoResult(TextField infoResult) {
+        this.infoResult = infoResult;
+    }
+
+    public Button getOperation() {
+        return operation;
+    }
+
+    public void setOperation(Button operation) {
+        this.operation = operation;
+    }
+
+    public TextField getPrintSize() {
+        return printSize;
+    }
+
+    public void setPrintSize(TextField printSize) {
+        this.printSize = printSize;
+    }
+
+    public TextField getPrintWeight() {
+        return printWeight;
+    }
+
+    public void setPrintWeight(TextField printWeight) {
+        this.printWeight = printWeight;
+    }
+
+    public TextField getResultOperation() {
+        return resultOperation;
+    }
+
+    public void setResultOperation(TextField resultOperation) {
+        this.resultOperation = resultOperation;
+    }
+
+    public Slider getSliderImc() {
+        return sliderImc;
+    }
+
+    public void setSliderImc(Slider sliderImc) {
+        this.sliderImc = sliderImc;
+    }
+
+    public ImcController(TextField infoResult, Button operation, TextField printSize, TextField printWeight, TextField resultOperation, Slider sliderImc) {
+        this.infoResult = infoResult;
+        this.operation = operation;
+        this.printSize = printSize;
+        this.printWeight = printWeight;
+        this.resultOperation = resultOperation;
+        this.sliderImc = sliderImc;
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //calculate IMC
-        printWeight = Float.parseFloat(String.valueOf(printWeight));
-        printSize = Float.parseFloat(String.valueOf(printSize));
-        resultOperation = Float.parseFloat(String.valueOf(resultOperation));
-        float poids = 60;
-        float taille = (float) 1.60;
-        float result = (printWeight/(taille*taille));
-        // round on decimal
-        DecimalFormat result1 = new DecimalFormat("##.#");
-        String outpout = result1.format(result);
-        sliderImc = resultOperation;
-        System.out.println(outpout);
-        // condition for print info IMC
-        if (outpout.length() < 16.5) {
-            System.out.println("Famine");
-        } else if (outpout.length() > 16.5 && outpout.length() < 18.5){
-            System.out.println("Maigreur");
-        } else if (outpout.length() > 18.5 && outpout.length() < 25){
-            System.out.println("Corpulence normale");
-        } else if (outpout.length() > 25 && outpout.length() < 30){
-            System.out.println("Surpoids");
-        } else if (outpout.length() > 30 && outpout.length() < 35){
-            System.out.println("Obésité modérée");
-        } else if (outpout.length() > 35 && outpout.length() < 40){
-            System.out.println("Obésité sévére");
-        } else {
-            System.out.println("Obésité morbide ou masive");
-        };
+        printSize.setText("size");
+        printWeight.setText("weight");
+        resultOperation.setText("result");
+        sliderImc.setShowTickLabels(true);
+        infoResult.setText("info");
 
-
+        operation.setOnMouseClicked(btnaction -> {
+            operation.setText("Calculé");
+            if (resultOperation.getText().length() < 16.5) {
+                infoResult.setText("Famine");
+            } else if (resultOperation.getText().length() < 16.5 && resultOperation.getText().length() > 18.5) {
+                infoResult.setText("Maigreur");
+            } else if (resultOperation.getText().length() < 18.5 && resultOperation.getText().length() > 25) {
+                infoResult.setText("Corpulence normale");
+            } else if (resultOperation.getText().length() < 25 && resultOperation.getText().length() > 30) {
+                infoResult.setText("Surpoids");
+            } else if (resultOperation.getText().length() < 30 && resultOperation.getText().length() > 35) {
+                infoResult.setText("Obésité modérée");
+            } else if (resultOperation.getText().length() < 35 && resultOperation.getText().length() > 40) {
+                infoResult.setText("Obésité sévére");
+            } else {
+                infoResult.setText("Obésité morbide ou massive");
+            }
+        });
     }
+
+
 }
