@@ -6,7 +6,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 
+import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -54,6 +56,12 @@ public class LibraryController implements Initializable {
     @FXML
     private TextField txtGetTitle;
 
+    @FXML
+    private Button buttonAdd;
+
+    @FXML
+    private Button buttonRevers;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle ) {
         Library maLybrairie = new Library();
@@ -77,5 +85,7 @@ public class LibraryController implements Initializable {
             tbvTtable.getItems().add(maLybrairie.getBookPrint().get(i));
         }
     }
+
+
 
 }
