@@ -20,8 +20,8 @@ public class Library {
 
 
     public void newBook(){
-        Book bookOne = new Book("nightCall", "Stephen King", 2010, 1, 1, "bonjour");
-        bookPrint.add(bookOne);
+        //Book bookOne = new Book("nightCall", "Stephen King", 2010, 1, 1, "bonjour");
+        //bookPrint.add(bookOne);
     }
 
 

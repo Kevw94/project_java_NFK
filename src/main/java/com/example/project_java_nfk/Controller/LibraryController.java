@@ -6,20 +6,18 @@ import com.example.project_java_nfk.Module.Book;
 import com.example.project_java_nfk.Module.Library;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.security.Timestamp;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.TimeZone;
 
 public class LibraryController implements Initializable {
+    boolean duplicate = false;
+    public int i = 0;
     static Date now = new Date();
 
 
@@ -71,6 +69,8 @@ public class LibraryController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle ) {
+
+
         TimeZone.setDefault(TimeZone.getTimeZone("Europe/Paris"));
         System.out.println(now);
 
@@ -80,13 +80,30 @@ public class LibraryController implements Initializable {
         printColumn.setCellValueFactory(new PropertyValueFactory<>("column"));
         printPublishedDate.setCellValueFactory(new PropertyValueFactory<>("publishedDate"));
         printSummary.setCellValueFactory(new PropertyValueFactory<>("summary"));
+
+        Library myLibrary = new Library();
+        // before validate
+        //System.out.println(tbvTtable.getItems() + " items after cells");
         validBook.setOnMouseClicked(actionBTN -> {
 
-            Library myLibrary = new Library();
-            System.out.println(myLibrary.bookPrint);
 
-            newBook(myLibrary);
+
+
+
+            //System.out.println(myLibrary.bookPrint);
+            //System.out.println(tbvTtable.getSelectionModel().getSelectedItems());
             // HERE IS PLACE TO PUT METHOD FOR CHECKING VALID BOOK
+
+//            checkDuplicatedBook(myLibrary);
+
+
+            // IF GOOD --> Create and add book
+            newBook(myLibrary);
+
+
+
+            //return duplicate;
+
 
 
             // REMOVE TEXT AFTER VALIDATE NEW BOOK
@@ -99,76 +116,60 @@ public class LibraryController implements Initializable {
             //maLybrairie.bookPrint.add(newBook(maLybrairie));
 
 
-            System.out.println(tbvTtable.getItems().get(0).getColumn());
-            System.out.println(myLibrary.bookPrint);
+            //System.out.println(tbvTtable.getItems().get(0).getColumn());
+            //System.out.println(myLibrary.getBookPrint() + "1");
+//            System.out.println(myLibrary.getBookPrint() + "sqd");
+//            System.out.println(myLibrary.getBookPrint().get(1) + "ezaeza");
+            System.out.println(myLibrary.bookPrint + "\n");
         });
         tbvTtable.setOnMouseClicked(this::handle);
-
-//        tbvTtable.setOnMouseClicked(actionBTN -> {
-//            txtGetTitle.setText(String.valueOf(tbvTtable.getItems(actionBTN).get(0).getName()));
-//
-//            System.out.println(actionBTN);
-//        });
-
-
-//        Node row = null;
-//        assert false;
-//        row.setOnMouseClicked(action ->{
-//            System.out.println("bonjour");
-//        });
-
-
-    }
-    public void checkPlaceCicked(){
-
     }
 
-    public Book newBook(Library myLibrary){
+    public boolean checkDuplicatedBook(Library myLibrary){
+        for(Book book : myLibrary.getBookPrint()){
+            for (int j =0; j< myLibrary.getBookPrint().size(); j++){
+                if (myLibrary.getBookPrint().get(j).equals(book)){
+                    duplicate = true;
+                    System.out.println(duplicate);
+                    return true;
+                }
+                else {
+                    duplicate = false;
+                    System.out.println(duplicate);
+                    return false;
+                }
 
+            }
 
-        Book book = new Book(txtGetTitle.getText(), txtGetAuthorName.getText(),(Integer.parseInt(intGetPublished.getText())),(Integer.parseInt(intGetColumn.getText())),(Integer.parseInt(intGetRange.getText())),txtGetSummary.getText());
-        myLibrary.getBookPrint().add(book);
-        for (int i = 0; i < tbvTtable.getItems().size(); i++){
-
-            System.out.println(tbvTtable.getItems().get(i) + "hello");
 
         }
+        System.out.println(duplicate);
+        return duplicate;
+    }
 
+    public Book newBook(Library myLibrary) {
 
-        for (int i = 0; i < myLibrary.getBookPrint().size(); i++) {
+        Book book = new Book(txtGetTitle.getText(), txtGetAuthorName.getText(), (Integer.parseInt(intGetPublished.getText())), (Integer.parseInt(intGetColumn.getText())), (Integer.parseInt(intGetRange.getText())), txtGetSummary.getText());
+
+        if ((book.getColumn() > 0 && book.getColumn() <= 5) && (book.getRange() > 0 && book.getRange() <= 7) && (book.getPublishedDate() <= 2020 && book.getPublishedDate() > 0)) {
+            System.out.println("not in");
+            myLibrary.getBookPrint().add(book);
             tbvTtable.getItems().add(myLibrary.getBookPrint().get(i));
-//
-//            // TODO FINISH TO CLOSE USER
-//            if (myLibrary.getBookPrint().get(i).getRange() <= i && myLibrary.getBookPrint().get(i).getColumn() <= i) {
-//                //TODO POPUP MESSAGE TO TRY AGAIN WITH GOOD VALUES
-//                System.out.println("ok");
-//
-//            }
-//            if (myLibrary.getBookPrint().get(i).getPublishedDate() >= now.getTime()) {
-//                //TODO RESTRAIN DATE TO USER
-//                System.out.println("datttte");
-//
-//            }
-//            if (myLibrary.getBookPrint().get(i).getSummary() instanceof String
-//                && myLibrary.getBookPrint().get(i).getAuthorName() instanceof String
-//                && myLibrary.getBookPrint().get(i).getName() instanceof String) {
-//                // THIS IS FOR ADDING BOOK FROM USER INPUT HERE
-//
-//
-//
-//                System.out.println();
-//                System.out.println(tbvTtable.getItems().get(i));
-//            }
-//            else {
-//                System.out.println("nope");
-//
-//
-//            }
-//            System.out.println(myLibrary.getBookPrint().stream().count());
-//            if (myLibrary.getBookPrint().get(i).getRange() == 0){
-//                System.out.println("nope");
-//            }
+            i++;
+            //TODO FOR NOT DUPLICATE
+            if(duplicate == false){
+
+
+//                System.out.println("not in");
+//                myLibrary.getBookPrint().add(book);
+//                tbvTtable.getItems().add(myLibrary.getBookPrint().get(i));
+//                i++;
+
+            }
+        } else if (duplicate == true){
+            System.out.println("duplicate ");
         }
+
         return book;
 
 
@@ -189,26 +190,5 @@ public class LibraryController implements Initializable {
             intGetColumn.setText(String.valueOf(tbvTtable.getSelectionModel().getSelectedItems().get(i).getColumn()));
             intGetRange.setText(String.valueOf(tbvTtable.getSelectionModel().getSelectedItems().get(i).getRange()));
             txtGetSummary.setText(String.valueOf(tbvTtable.getSelectionModel().getSelectedItems().get(i).getSummary()));
-          //  return;
-        //}
-        //this.tbvTtable.getSelectionModel().setCellSelectionEnabled(true);
-        //this.tbvTtable.setEditable(true);
-        Node source = (Node)event.getSource();
-        System.out.println(tbvTtable.getOnSort());
-        //System.out.println(tbvTtable.getItems().get(getIndex()));
-        System.out.println(tbvTtable. getRowFactory());//.getSelectionModel().cellValueFactoryProperty());
-        System.out.println(event.getSource());
-
-        //System.out.println(tbvTtable.event.getSource());
-
-       // txtGetTitle.setText(String.valueOf(tbvTtable.getItems().getIndexOf(actionBTN)));
-        //getText().getName()
-//        actionBTN.getTarget();
-//        txtGetTitle.setText(String.valueOf(actionBTN.getTarget()));
-//        txtGetTitle.setText(actionBTN.getText());
-
-        //System.out.println(tbvTtable.getItems().get(actionBTN.getTarget()));
-        // TODO WIP HERE GET VALUE OF EVENT LISTENER
-//        System.out.println(actionBTN.getTarget().getClass().getName());
     }
 }
