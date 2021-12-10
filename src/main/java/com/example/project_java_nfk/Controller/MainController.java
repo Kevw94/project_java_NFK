@@ -30,6 +30,9 @@ import java.util.ResourceBundle;
 public class MainController implements Initializable {
 
     @FXML
+    private MenuItem exit;
+
+    @FXML
     private MenuItem runlibrary;
 
     @FXML
@@ -76,6 +79,12 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        exit.setOnAction(event -> {
+            System.exit(0);
+        });
+
+
         mainAnc.getChildren().removeAll(pageLibrary, pageImc, pageBinaire,pageHexadecimal,pageChiffreRomain,pageArmee);
 
 
@@ -125,4 +134,7 @@ public class MainController implements Initializable {
 
 
     }
+
+
+
 }
