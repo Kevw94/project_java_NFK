@@ -1,5 +1,6 @@
 package com.example.project_java_nfk.Controller;
 
+import com.example.project_java_nfk.Module.Imc;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -22,92 +23,44 @@ public class ImcController implements Initializable {
     @FXML
     private TextField printWeight;
 
+
     @FXML
     private TextField resultOperation;
 
     @FXML
     private Slider sliderImc;
 
-
-    public TextField getInfoResult() {
-        return infoResult;
-    }
-
-    public void setInfoResult(TextField infoResult) {
-        this.infoResult = infoResult;
-    }
-
-    public Button getOperation() {
-        return operation;
-    }
-
-    public void setOperation(Button operation) {
-        this.operation = operation;
-    }
-
-    public TextField getPrintSize() {
-        return printSize;
-    }
-
-    public void setPrintSize(TextField printSize) {
-        this.printSize = printSize;
-    }
-
-    public TextField getPrintWeight() {
-        return printWeight;
-    }
-
-    public void setPrintWeight(TextField printWeight) {
-        this.printWeight = printWeight;
-    }
-
-    public TextField getResultOperation() {
-        return resultOperation;
-    }
-
-    public void setResultOperation(TextField resultOperation) {
-        this.resultOperation = resultOperation;
-    }
-
-    public Slider getSliderImc() {
-        return sliderImc;
-    }
-
-    public void setSliderImc(Slider sliderImc) {
-        this.sliderImc = sliderImc;
-    }
-
-    public ImcController(TextField infoResult, Button operation, TextField printSize, TextField printWeight, TextField resultOperation, Slider sliderImc) {
-        this.infoResult = infoResult;
-        this.operation = operation;
-        this.printSize = printSize;
-        this.printWeight = printWeight;
-        this.resultOperation = resultOperation;
-        this.sliderImc = sliderImc;
-
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        printSize.setText("size");
-        printWeight.setText("weight");
-        resultOperation.setText("result");
-        sliderImc.setShowTickLabels(true);
-        infoResult.setText("info");
-
+//        printSize.setText("size");
+//        printWeight.setText("weight");
+//        resultOperation.setText("resulte");
+//        //sliderImc.setShowTickLabels(true);
+//        infoResult.setText("info");
         operation.setOnMouseClicked(btnaction -> {
-            operation.setText("Calculé");
-            if (resultOperation.getText().length() < 16.5) {
+            Imc monImc= new Imc (Float.parseFloat(printSize.getText()), Float.parseFloat(printWeight.getText())
+                     ,infoResult.getText());
+
+            monImc.Operation();
+            resultOperation.setText(String.valueOf(monImc.getResultOperation()));
+            monImc.Operation();
+            System.out.println(monImc.getResultOperation());
+
+//        sliderImc.setShowTickLabels(btnslider -> {
+//            sliderImc.(resultOperation);
+//        });
+
+            if (monImc.getResultOperation() < 16.5) {
                 infoResult.setText("Famine");
-            } else if (resultOperation.getText().length() < 16.5 && resultOperation.getText().length() > 18.5) {
+            } else if (monImc.getResultOperation() > 16.5 && monImc.getResultOperation() < 18.5) {
                 infoResult.setText("Maigreur");
-            } else if (resultOperation.getText().length() < 18.5 && resultOperation.getText().length() > 25) {
+            } else if (monImc.getResultOperation() > 18.5 && monImc.getResultOperation() < 25) {
                 infoResult.setText("Corpulence normale");
-            } else if (resultOperation.getText().length() < 25 && resultOperation.getText().length() > 30) {
+            } else if (monImc.getResultOperation() > 25 && monImc.getResultOperation() < 30) {
                 infoResult.setText("Surpoids");
-            } else if (resultOperation.getText().length() < 30 && resultOperation.getText().length() > 35) {
+            } else if (monImc.getResultOperation() > 30 && monImc.getResultOperation() < 35) {
                 infoResult.setText("Obésité modérée");
-            } else if (resultOperation.getText().length() < 35 && resultOperation.getText().length() > 40) {
+            } else if (monImc.getResultOperation() > 35 && monImc.getResultOperation() < 40) {
                 infoResult.setText("Obésité sévére");
             } else {
                 infoResult.setText("Obésité morbide ou massive");
