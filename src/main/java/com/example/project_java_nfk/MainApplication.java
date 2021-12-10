@@ -15,15 +15,12 @@ public class MainApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("FirstMenuTemplate.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Hello!");
+        stage.setTitle("Easy Life For Bookseller");
         stage.setScene(scene);
         stage.show();
     }
 
     public static void main(String[] args) {
         launch();
-//        Library testLibrary = new Library();
-//        testLibrary.newBook();
-//        System.out.println(testLibrary.bookPrint);
     }
 }

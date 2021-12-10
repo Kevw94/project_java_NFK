@@ -139,10 +139,7 @@ public class LibraryController implements Initializable {
         validBook.setOnMouseClicked(event -> createBookOnBtnValidate(myLibrary));
 
         tbvTtable.setOnMouseClicked(this::showSelectedBookInForm);
-        if (i == -1){
-            i = 0;
-            System.out.println(i);
-        }
+
     }
 
 
@@ -159,6 +156,10 @@ public class LibraryController implements Initializable {
 
     // Create New Book and add it in the TableView
     public Book newBook(Library myLibrary) {
+        if (i == -1){
+            i = 0;
+            //System.out.println(i);
+        }
         Book book = new Book(txtGetTitle.getText(),
                 txtGetAuthorName.getText(),
                 (Integer.parseInt(intGetPublished.getText())),
@@ -243,8 +244,6 @@ public class LibraryController implements Initializable {
             intGetColumn.setText(null);
             intGetRange.setText(null);
             txtGetSummary.setText(null);
-            //maLybrairie.bookPrint.add(newBook(maLybrairie));
-           // System.out.println(myLibrary.bookPrint + "\n");
     };
 
 
@@ -259,11 +258,14 @@ public class LibraryController implements Initializable {
         intGetPublished.setDisable(boolAddBook);
         intGetColumn.setDisable(boolAddBook);
         validBook.setDisable(boolAddBook);
-        System.out.println(boolAddBook);
+        //System.out.println(boolAddBook);
     }
 
     private void forRemoveBookInTableView(Library myLibrary) {
-        i--;
+        if (i == -1){
+            i = 0;
+        }
+
 
         ObservableList selectedCells = tbvTtable.getSelectionModel().getSelectedCells();
         TablePosition tablePosition = (TablePosition) selectedCells.get(0);
@@ -293,6 +295,7 @@ public class LibraryController implements Initializable {
         intGetColumn.setDisable(boolAddBook);
         validBook.setDisable(boolAddBook);
 
+        i--;
     }
 
 

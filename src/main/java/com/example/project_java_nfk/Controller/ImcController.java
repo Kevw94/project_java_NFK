@@ -32,11 +32,8 @@ public class ImcController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-//        printSize.setText("size");
-//        printWeight.setText("weight");
-//        resultOperation.setText("resulte");
-//        //sliderImc.setShowTickLabels(true);
-//        infoResult.setText("info");
+
+
         operation.setOnMouseClicked(btnaction -> {
             Imc monImc= new Imc (Float.parseFloat(printSize.getText()), Float.parseFloat(printWeight.getText())
                      ,infoResult.getText());
@@ -46,9 +43,6 @@ public class ImcController implements Initializable {
             monImc.Operation();
             System.out.println(monImc.getResultOperation());
 
-//        sliderImc.setShowTickLabels(btnslider -> {
-//            sliderImc.(resultOperation);
-//        });
 
             if (monImc.getResultOperation() < 16.5) {
                 infoResult.setText("Famine");
