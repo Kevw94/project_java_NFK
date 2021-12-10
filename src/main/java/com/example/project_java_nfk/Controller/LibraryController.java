@@ -27,8 +27,6 @@ import java.util.ResourceBundle;
 import java.util.TimeZone;
 
 public class LibraryController implements Initializable {
-    //Unirest
-    private Stage stage;
     boolean boolModified = false;
     boolean boolAddBook = true;
     public int i = 0;
@@ -103,23 +101,13 @@ public class LibraryController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle ) {
-
-
-
-
-
-
-
-
-
-
-
         //dlgError.setDisable(true);
         TimeZone.setDefault(TimeZone.getTimeZone("Europe/Paris"));
         System.out.println(now);
         //DialogPane dialog = new DialogPane();
 
         // FOR DISABLE OR NOT FORMULARY INPUT
+        txtGetUrl.setDisable(true);
         txtGetTitle.setDisable(boolAddBook);
         txtGetSummary.setDisable(boolAddBook);
         txtGetAuthorName.setDisable(boolAddBook);
@@ -148,9 +136,13 @@ public class LibraryController implements Initializable {
         buttonRevers.setOnMouseClicked(event -> forRemoveBookInTableView(myLibrary));
 
         // before validate
-        validBook.setOnMouseClicked(event -> createBookOnBtnValidate(myLibrary, stage));
+        validBook.setOnMouseClicked(event -> createBookOnBtnValidate(myLibrary));
 
         tbvTtable.setOnMouseClicked(this::showSelectedBookInForm);
+        if (i == -1){
+            i = 0;
+            System.out.println(i);
+        }
     }
 
 
@@ -166,11 +158,7 @@ public class LibraryController implements Initializable {
 
 
     // Create New Book and add it in the TableView
-    public Book newBook(Library myLibrary, Stage stage) {
-        //"https://dog.ceo/api/breeds/image/random"
-
-
-
+    public Book newBook(Library myLibrary) {
         Book book = new Book(txtGetTitle.getText(),
                 txtGetAuthorName.getText(),
                 (Integer.parseInt(intGetPublished.getText())),
@@ -183,75 +171,21 @@ public class LibraryController implements Initializable {
         if ((book.getColumn() > 0 && book.getColumn() <= 5) &&
                 (book.getRange() > 0 && book.getRange() <= 7) &&
                 (book.getPublishedDate() <= 2020 && book.getPublishedDate() > 0) && boolModified == false ) {
-
-            try {
-
-                InputStream stream = new FileInputStream(txtGetUrl.getText());
-                //Image image = new Image();
-                //ImageView imageView = new ImageView();
-                imgUrl.setImage(new Image("https:/toppng.com/uploads/preview/site-de-telechargement-de-photos-et-images-gratuites-point-d-interrogation-libre-de-droit-11563164956sl8mkeund8.png"));
-                //Setting image to the image view
-//                imageView.setImage(image);
-//                //Setting the image view parameters
-//                imageView.setX(10);
-//                imageView.setY(10);
-//                imageView.setFitWidth(575);
-//                imageView.setPreserveRatio(true);
-//                //Setting the Scene object
-//                Group root = new Group(imageView);
-//                Scene scene = new Scene(root, 595, 370);
-//                stage.setTitle("Displaying Image");
-//                stage.setScene(scene);
-//                stage.show();
-//
-//                System.out.println(stream);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-            //System.out.println("not in");
             myLibrary.getBookPrint().add(book);
             tbvTtable.getItems().add(myLibrary.getBookPrint().get(i));
-//            InputStream stream = null;
-
-
-
-//            Class<?> clazz = this.getClass();
-//            InputStream input = clazz.getResourceAsStream(txtGetUrl.getText());
-//            Image image = new Image(input);
-//            ImageView imageView = new ImageView(image);
-//            imageView.setDisable(false);
-
-
-            //imgUrl.setSource(txtGetUrl.getText());
-            //image.setImage(imgUrl.getText());
-
             i++;
         }
         else if (boolModified == true){
 
-            //TODO REPLACE DATA SELECTED IN TABLEVIEW
-            System.out.println("test");
-            System.out.println("bonjour");
-//            myLibrary.getBookPrint().replace( tbvTtable.getSelectionModel().getSelectedItems());
-//            tbvTtable.getItems().replace(myLibrary.getBookPrint().get(i));
-//
-//            ObservableList selectedCells = tbvTtable.getSelectionModel().getSelectedCells();
-//            TablePosition tablePosition = (TablePosition) selectedCells.get(0);
-//            int row = tablePosition.getRow();
-//            myLibrary.getBookPrint().replaceAll();
+            int index = tbvTtable.getSelectionModel().getSelectedIndex();
+            myLibrary.getBookPrint().get(index).setAuthorName(txtGetAuthorName.getText());
+            myLibrary.getBookPrint().get(index).setName(txtGetTitle.getText());
+            myLibrary.getBookPrint().get(index).setPublishedDate((Integer.parseInt(intGetPublished.getText())));
+            myLibrary.getBookPrint().get(index).setColumn((Integer.parseInt(intGetColumn.getText())));
+            myLibrary.getBookPrint().get(index).setRange((Integer.parseInt(intGetRange.getText())));
+            myLibrary.getBookPrint().get(index).setSummary(txtGetSummary.getText());
 
-            //tbvTtable.getItems().add(myLibrary.getBookPrint().get(row));
-            //System.out.println(row);
-            //myLibrary.getBookPrint().remove(row);
-            //tbvTtable.getItems().remove(row);
-            //myLibrary.getBookPrint().replaceAll();
-
-
-
-
-        }
-        else {
-
+            tbvTtable.refresh();
         }
 
         boolAddBook = true;
@@ -295,11 +229,11 @@ public class LibraryController implements Initializable {
 
     }
 
-    private void createBookOnBtnValidate(Library myLibrary, Stage stage){
+    private void createBookOnBtnValidate(Library myLibrary){
             // HERE IS PLACE TO PUT METHOD FOR CHECKING VALID BOOK
 //            checkDuplicatedBook(myLibrary);
             // IF GOOD --> Create and add book
-            newBook(myLibrary, stage);
+            newBook(myLibrary);
 
             //return duplicate;
             // REMOVE TEXT AFTER VALIDATE NEW BOOK
@@ -310,7 +244,7 @@ public class LibraryController implements Initializable {
             intGetRange.setText(null);
             txtGetSummary.setText(null);
             //maLybrairie.bookPrint.add(newBook(maLybrairie));
-            System.out.println(myLibrary.bookPrint + "\n");
+           // System.out.println(myLibrary.bookPrint + "\n");
     };
 
 
@@ -330,7 +264,7 @@ public class LibraryController implements Initializable {
 
     private void forRemoveBookInTableView(Library myLibrary) {
         i--;
-        // TODO IF TIME PREVENT REMOVING WITHOUT STRICTLY SELECTED TIME
+
         ObservableList selectedCells = tbvTtable.getSelectionModel().getSelectedCells();
         TablePosition tablePosition = (TablePosition) selectedCells.get(0);
         int row = tablePosition.getRow();
