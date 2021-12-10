@@ -11,6 +11,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="651.0" prefWidth="803.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project_java_nfk.Controller.LibraryController">
@@ -120,5 +121,11 @@
             </ImageView>
          </graphic>
       </Button>
+      <Pane layoutX="486.0" layoutY="399.0" prefHeight="200.0" prefWidth="282.0" styleClass="imgUrl">
+         <children>
+            <ImageView fx:id="imgUrl" fitHeight="56.0" fitWidth="62.0" layoutX="8.0" layoutY="136.0" pickOnBounds="true" preserveRatio="true" style="-fx-image: blue;" styleClass="imgUrl">
+      </ImageView>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

@@ -9,15 +9,19 @@ public class Book  {
     private String name;
     private String authorName;
     private int publishedDate;
+    private String urlOfBook;
     private int column;
     private int range;
     private String summary;
 
 
-    public Book(String name, String authorName, int publishedDate, int column, int range, String summary) {
+
+
+    public Book(String name, String authorName, int publishedDate, String urlOfBook, int column, int range, String summary) {
         this.name = name;
         this.authorName = authorName;
         this.publishedDate = publishedDate;
+        this.urlOfBook = urlOfBook;
         this.column = column;
         this.range = range;
         this.summary = summary;
@@ -72,6 +76,14 @@ public class Book  {
 
     public void setSummary(String summary) {
         this.summary = summary;
+    }
+
+    public String getUrlOfBook() {
+        return urlOfBook;
+    }
+
+    public void setUrlOfBook(String urlOfBook) {
+        this.urlOfBook = urlOfBook;
     }
 
 
