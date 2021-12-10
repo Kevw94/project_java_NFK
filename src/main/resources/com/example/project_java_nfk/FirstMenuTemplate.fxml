@@ -32,21 +32,14 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SeparatorMenuItem?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
+<?import javafx.geometry.Insets?>
 <VBox fx:id="main" prefHeight="651.0" prefWidth="867.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project_java_nfk.Controller.MainController">
   <children>
     <MenuBar VBox.vgrow="NEVER">
@@ -64,7 +57,7 @@
             <SeparatorMenuItem mnemonicParsing="false" />
             <MenuItem mnemonicParsing="false" text="Preferences…" />
             <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem fx:id="exit"  mnemonicParsing="false" text="Quit" />
+            <MenuItem fx:id="exit" mnemonicParsing="false" text="Quit" />
           </items>
         </Menu>
         <Menu mnemonicParsing="false" text="Edit">
@@ -88,48 +81,48 @@
         </Menu>
       </menus>
     </MenuBar>
+      <MenuBar prefHeight="28.0" prefWidth="867.0">
+         <menus>
+            <Menu fx:id="runlibrary" mnemonicParsing="false" text="Library">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" />
+              </items>
+            </Menu>
+            <Menu fx:id="runBinaire" mnemonicParsing="false" text="Binaire">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" />
+              </items>
+            </Menu>
+            <Menu fx:id="runHexadecimal" mnemonicParsing="false" text="Hexadecimal">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" />
+              </items>
+            </Menu>
+            <Menu fx:id="runIMC" mnemonicParsing="false" text="IMC">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" />
+              </items>
+            </Menu>
+            <Menu fx:id="runChiffreRomain" mnemonicParsing="false" text="Chiffre romain">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" />
+              </items>
+            </Menu>
+            <Menu fx:id="runArmee" mnemonicParsing="false" text="Armée">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" />
+              </items>
+            </Menu>
+         </menus>
+      </MenuBar>
     <AnchorPane fx:id="mainAnc" maxHeight="-1.0" maxWidth="-1.0" prefHeight="36.0" prefWidth="867.0" VBox.vgrow="ALWAYS">
          <children>
-            <MenuBar prefHeight="28.0" prefWidth="867.0">
-               <menus>
-                  <Menu fx:id="runlibrary" mnemonicParsing="false" text="Library">
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="Action 1" />
-                    </items>
-                  </Menu>
-                  <Menu fx:id="runBinaire" mnemonicParsing="false" text="Binaire">
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="Action 1" />
-                    </items>
-                  </Menu>
-                  <Menu fx:id="runHexadecimal" mnemonicParsing="false" text="Hexadecimal">
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="Action 1" />
-                    </items>
-                  </Menu>
-                  <Menu fx:id="runIMC" mnemonicParsing="false" text="IMC">
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="Action 1" />
-                    </items>
-                  </Menu>
-                  <Menu fx:id="runChiffreRomain" mnemonicParsing="false" text="Chiffre romain">
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="Action 1" />
-                    </items>
-                  </Menu>
-                  <Menu fx:id="runArmee" mnemonicParsing="false" text="Armée">
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="Action 1" />
-                    </items>
-                  </Menu>
-               </menus>
-            </MenuBar>
             <fx:include fx:id="pageLibrary" source="library.fxml" AnchorPane.topAnchor="40.0" />
-            <fx:include fx:id="pageImc" source="IMC.fxml" />
             <fx:include fx:id="pageBinaire" source="Binaire.fxml" />
             <fx:include fx:id="pageHexadecimal" source="hexadecimal.fxml" />
             <fx:include fx:id="pageChiffreRomain" source="chiffreRomain.fxml" />
             <fx:include fx:id="pageArmee" source="armee.fxml" />
+            <fx:include fx:id="pageImc" source="imc.fxml" />
          </children>
          <VBox.margin>
             <Insets />

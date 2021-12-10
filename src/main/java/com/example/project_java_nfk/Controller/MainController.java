@@ -53,7 +53,7 @@ public class MainController implements Initializable {
     private AnchorPane pageLibrary;
 
     @FXML
-    private  AnchorPane pageImc;
+    private  VBox pageImc;
 
     @FXML
     private AnchorPane mainAnc;
